@@ -1,13 +1,19 @@
 import time
 from multiprocessing import Pool, cpu_count
+from math import isqrt
 
 
 def get_division(n: int) -> list[int]:
     result = []
 
-    for i in range(1, n + 1):
+    for i in range(1, isqrt(n) + 1):
         if n % i == 0:
             result.append(i)
+
+            p = n // i
+
+            if p != i:
+                result.append(p)
 
     return result
 
